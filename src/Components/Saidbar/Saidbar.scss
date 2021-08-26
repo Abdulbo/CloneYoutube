@@ -1,0 +1,152 @@
+.saidbar {
+    max-height: 100vh;
+    width: 20%;
+    background-color: rgb(23, 23, 30);
+    overflow: auto;
+
+    .saidbar__wrapper-menu {
+        display: block;
+        display: flex;
+        align-items: center;
+        padding: 14px;
+
+        .wrapper-menu__brend-wrapper {
+            display: block;
+            height: 25px;
+            width: 116px;
+            margin-left: 27px;
+
+            .brend-wrapper__img-icon {
+                background-color: #fff;
+                border-radius: 7.9px;
+                overflow: hidden;
+                margin-right: 3px;
+            }
+        }
+    }
+
+    .saidbar__wrapper-scrol {
+        overflow: auto;
+        height: 90vh;
+
+        &::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        &::-webkit-scrollbar-track {
+            background: rgb(81, 81, 86)
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: rgb(23, 23, 30);
+            border-radius: 20px;
+            border: 3px solid rgb(81, 81, 86)
+        }
+
+        .saidbar__list {
+            padding: 14px;
+            list-style: none;
+
+            .saidbar__item {
+                margin: 17px 0;
+
+                .item__link {
+                    display: flex;
+                    align-items: center;
+                    text-decoration: none;
+                    font-weight: 400;
+                    font-size: 16px;
+                    color: rgb(81, 81, 86);
+
+                    img {
+                        margin-right: 8px;
+                    }
+
+                }
+
+                .item__link-red {
+                    color: #ff0000;
+                }
+            }
+        }
+
+        .saidbar__list2 {
+            list-style: none;
+            padding: 0 14px;
+            margin-top: 10px;
+
+            .saidbar__item2 {
+                display: flex;
+                align-items: center;
+                margin: 17px 0;
+
+                .item__link2 {
+                    text-decoration: none;
+                    display: flex;
+                    align-items: center;
+                    color: rgb(81, 81, 86);
+                    font-weight: 400;
+                    font-size: 16px;
+
+                    img {
+                        margin-right: 8px;
+                    }
+                }
+
+                .item__link-red2 {
+                    color: #ff0000;
+                    transition: 0.7s ease;
+                }
+            }
+        }
+
+        .user-Title {
+            color: #ffff;
+
+            padding: 10px 14px;
+
+        }
+
+        .user-List {
+            list-style: none;
+            margin-top: 16px;
+            padding: 0 14px;
+
+            .user-List__item {
+                margin: 17px 0;
+
+                .item__user-link {
+                    display: block;
+                    display: flex;
+                    align-items: center;
+                    text-decoration: none;
+                    color: rgb(81, 81, 86);
+                    font-weight: 400;
+                    font-size: 16px;
+
+                    img {
+                        margin-right: 8px;
+                    }
+                }
+            }
+        }
+
+        .setting-wrapper {
+            margin-top: 56px;
+            margin-bottom: 18px;
+            width: 84px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            padding: 10px 14px;
+
+            .setting-wrapper__icon {
+                margin-right: 8px;
+            }
+
+            p {
+                color: rgb(81, 81, 86)
+            }
+        }
+    }
+}
