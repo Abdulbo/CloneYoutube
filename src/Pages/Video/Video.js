@@ -1,6 +1,7 @@
 import "./Video.scss"
 import { Link } from "react-router-dom";
 import { useEffect  , useState} from "react";
+import { useRef } from "react";
 
 //components
 import SectionVideo from "../../Components/SectionVideo/SectionVideo";
@@ -25,16 +26,23 @@ import ImgDisc from "../../Assets/img/desicription-video.png"
 
 
 const Video = () => {
-  const [data,setData] = useState([])
+  
+  const [data,setData] = useState([]);
+  const [loading,setLoading] = useState(true)
+  const sec1Ref = useRef(null);
+
   useEffect(() =>{
     fetch("https://jsonplaceholder.typicode.com/photos")
     .then((res) => res.json())
-    .then((data) => setData(data.filter(data => data.albumId === 2)))
-  },[])
+    .then((data) => {
+      setLoading(false)
+      setData(data.filter(data => data.albumId === 2))
+    })
+  },[loading])
  
     return (
         <div className="video-page">
-          <header className="video-page__header-video">
+          <header className="video-page__header-video" ref={sec1Ref}>
             <div className="header-video__wrapper-search">
                 <img src={ImgGamburger} alt="rasm" />
                <span>
@@ -57,7 +65,7 @@ const Video = () => {
           </header>
         <div className="main-section">
         <div className="video-page__video-disc-section-piece">
-            <iframe width={950} height={375} src="https://www.youtube.com/embed/rlhb4BHF6x8" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media;
+            <iframe width={920} height={375} src="https://www.youtube.com/embed/rlhb4BHF6x8" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media;
              gyroscope; picture-in-picture" allowFullScreen />
              <h3 className="video-disc-section-piece__title">Dude You Re Getting A Telescope</h3>
              <div className="wrapper-btn-like">
@@ -105,9 +113,10 @@ const Video = () => {
                  <h3>Next</h3>
                   <span className="video-section-piece__wrapper-title">
                     <p className="wrapper-title__text">Autoplay</p>
-                    <input  className="wrapper-title__checkbox" type="checkbox" />
+                    <input className="wrapper-title__checkbox" type="checkbox"/>
                   </span>
                  </div>
+                 {loading && <div className="lds-ellipsis"><div></div><div></div><div></div><div></div></div>}
               { data.length > 0 && <ul className="sec-List-video-img"> 
                  {
                    data.map(data => (

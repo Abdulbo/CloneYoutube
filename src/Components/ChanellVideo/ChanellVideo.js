@@ -4,7 +4,7 @@ import "./ChanellVideo.scss"
 
 const ChanellVideo = ({video}) => {
     return (
-        <li  className="wrapper-chanell-video">
+        <div  className="wrapper-chanell-video">
            <Link to="video" className='wrapper-chanell-video__link'>
               <img src={video} alt='rasm'  className="video-chanell" />
            </Link>
@@ -22,7 +22,7 @@ const ChanellVideo = ({video}) => {
                 <span>11k views  ·  6 months ago</span>
             </div>
 
-        </li>
+        </div>
     );
 };
 

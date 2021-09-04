@@ -20,16 +20,20 @@ import FooterVideo from "../../Components/FooterVideo/FooterVido";
 
 
 
+
 const Main = () => {
     const [videos, setVideos] = useState([]);
-    useEffect(()=>(
+    const [lodenig,setLoading] = useState(true);
+    useEffect(()=>{
         fetch("https://jsonplaceholder.typicode.com/photos/")
         .then((res) => res.json())
-        .then((data) => setVideos(data.filter(data => data.albumId === 5)))
-    ),[])
+        .then((data) => {
+            setLoading(false)
+            setVideos(data.filter(data => data.albumId === 5))
+        })},[lodenig]);
     
-
     return (
+        
      <>
         <Saidbar />
         <div className="main">
@@ -60,9 +64,10 @@ const Main = () => {
                       <button className="scrol-btn" >  <img className="wrapper-scrol-btn__img-right"src={ImgRight} alt="rasm" /></button>
                 </span>
                 </div>
+                { lodenig && <div className="lds-ellipsis"><div></div><div></div><div></div><div></div></div>}
                {videos.length > 0 && <ul className="header-list">
                 {videos.map((video) =>(
-                   <HeaderVideo key={video.id} videoTitle={video.title} videoImg={video.url} />
+                   <HeaderVideo key={video.id} id={video.id} videoTitle={video.title} videoImg={video.url} />
                 ))}
                 </ul>}
                 <div className="main-vido__wrapper-main">
@@ -74,7 +79,9 @@ const Main = () => {
                         <button className="scrol-btn" >  <img className="wrapper-scrol-btn__img-right"src={ImgRight} alt="rasm" /></button>
                     </span>
                 </div>
+                { lodenig && <div className="lds-ellipsis"><div></div><div></div><div></div><div></div></div>}
                 {
+                    
                     videos.length > 0 && <ul className="main-list">
                       {videos.map(video => (
                             <MainVideo   key={video.id}  videoTitle={video.title} videoImg={video.url}/>
@@ -95,6 +102,7 @@ const Main = () => {
                         <button className="scrol-btn" >  <img className="wrapper-scrol-btn__img-right"src={ImgRight} alt="rasm" /></button>
                     </span>
                 </div>
+                { lodenig && <div className="lds-ellipsis"><div></div><div></div><div></div><div></div></div>}
                 {
                     videos.length > 0 && <ul className="footer-list">
                       {videos.map(video => (

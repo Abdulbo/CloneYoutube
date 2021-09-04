@@ -35,6 +35,7 @@ const Saidbar = () => {
                         <img className="brend-wrapper__img-icon" src={YouTubeIcon} alt="icon" />
                         <img  src={YouTubeTextIcons} alt="icon" />
                     </span>
+                    <input className="checkbox" type="checkbox"/>
             </span>
             <div className="saidbar__wrapper-scrol">
                 <ul className="saidbar__list">

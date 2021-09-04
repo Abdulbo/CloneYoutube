@@ -24,12 +24,16 @@ import ChanellVideoFooter from "../../Components/ChanellVideoFooter/ChanellVideo
 
 
 const Chanell = () => {
-    const [data,setData] = useState([])
+    const [data,setData] = useState([]);
+    const [loading,setLoading] = useState(true);
     useEffect(()=>{
         fetch("https://jsonplaceholder.typicode.com/photos")
         .then(res => res.json())
-        .then(data => setData(data.filter(data => data.albumId === 1)))
-    },[data])
+        .then(data => {
+            setLoading(false)
+            setData(data.filter(data => data.albumId === 1))
+        })
+    },[loading])
 
    const filtered = data.filter(data => data.id === 6)
     return (
@@ -54,7 +58,6 @@ const Chanell = () => {
         </div>
         <div className="chanell-wrapper__wrapper-main-title">
             <div className="wrapper-main-title__user-wrapper">
-                  
                      <img className="user-wrapper__img-user" src={ChanellUser} alt="rasm" />
                 <span>
                     <h3>Margaret Phelps</h3>
@@ -97,9 +100,8 @@ const Chanell = () => {
                         <li>
                                 <img src={ImgSearch} alt="rasm" />
                         </li>
-                           
-                      
                     </ul>
+                    {loading && <div className="lds-ellipsis"><div></div><div></div><div></div><div></div></div>}
                     {filtered.map(data => (
                       <ChanellVideo  key={data.id} video={data.url}  />
                 ))}
@@ -129,11 +131,13 @@ const Chanell = () => {
                         <button className="scrol-btn" >  <img className="wrapper-scrol-btn__img-right"src={ImgRight} alt="rasm" /></button>
                     </span>
              </div>
-             <ul className="chanell-list__chanell-footer-video">
+             {loading && <div className="lds-ellipsis"><div></div><div></div><div></div><div></div></div>}
+         {data.length > 0 && <ul className="chanell-list__chanell-footer-video">
+           
                        {data.map(data => (
                             <ChanellVideoFooter key={data.id} dataImg={data.url} dataTitle={data.title} />
                        ))}
-        </ul>
+        </ul>}
         </div>
       
     </div>
